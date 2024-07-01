@@ -5,7 +5,7 @@ const app = express();
 
 const hello = async function (req, res) {
 	const ip = await publicIpv4();
-	const ip2 = req.ips;
+	const ip2 = req.ip;
 
 	console.log(ip, ip2);
 	if (JSON.stringify(req.query) === "{}") {
