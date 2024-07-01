@@ -1,11 +1,13 @@
 import express from "express";
-const app = express();
+import { publicIpv4 } from "public-ip";
 import { fetchLocationFromIP } from "./apiRequests.js";
+const app = express();
 
-const hello = function (req, res) {
-	console.log("Hello I'm here");
-	console.log(req.ip);
-	fetchLocationFromIP(req.ip);
+const hello = async function (req, res) {
+	const ip = await publicIpv4();
+	const ip2 = res.ip;
+
+	console.log(ip, ip2);
 	if (JSON.stringify(req.query) === "{}") {
 		res.status(200);
 	}
@@ -23,6 +25,6 @@ app.use("*", (_, res) => {
 });
 
 // Call the server
-app.listen(3000, () => {
+app.listen(3000 || process.env.port, () => {
 	console.log("Server Started on port 3000");
 });
