@@ -9,7 +9,7 @@ const fetchWeatherFromIP = async function (ip) {
 		const data = await res.json();
 		return data;
 	} catch (err) {
-		next(err);
+		throw new Error("Could Not get data.");
 	}
 };
 
