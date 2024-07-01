@@ -9,7 +9,7 @@ export default async (req, res, next) => {
 	try {
 		const data = await fetchWeatherFromIP(client_ip);
 		const location = data.location.region;
-		const greeting = `Hello, Mark!, the temperature is ${data.current.temp_c}  degrees Celsius in ${location}`;
+		const greeting = `Hello, ${name}, the temperature is ${data.current.temp_c}  degrees Celsius in ${location}`;
 		res.status(200).json({
 			client_ip,
 			location,
