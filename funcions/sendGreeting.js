@@ -7,6 +7,6 @@ export default (req, res, next) => {
 
 	res.status(200).json({
 		message: "success",
-		data: { clinetIp, req: req.headers["x-real-ip"] },
+		data: { clinetIp, req: req.headers },
 	});
 };
